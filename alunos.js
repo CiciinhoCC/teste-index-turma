@@ -1,4 +1,4 @@
-[
+alunos = [
     {
         "nome": "Ana",
         "pasta": "ana"
@@ -10,9 +10,5 @@
     {
         "nome": "Andri",
         "pasta": "andri"
-    },
-    {
-        "nome": "Aquino",
-        "pasta": "aquino"
     }
 ]

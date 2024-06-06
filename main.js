@@ -1,32 +1,27 @@
-function fetchJSON() {
-    fetch("./alunos.json")
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error
-                    (`HTTP error! Status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .then((data) => {
-            console.log(data);
-            return data;
-        })
-        .catch((error) => {
-            console.error("Unable to fetch data:", error);
-            return [];
-        })
-}
-
-function criarElem(tag,atrib){
-    elem = document.createElement(tag);
-    for(i = 0; i < atrib.length; i++){
-        elem.setAttribute
+function criarElem(tag, atrib) {
+    let elem = document.createElement(tag);
+    if (atrib != [[]]) {
+        for (j = 0; j < atrib.length; j++) {
+            elem.setAttribute(atrib[j][0], atrib[j][1]);
+        }
     }
+    return elem;
 }
 
+console.log(alunos)
 
-alunos = fetchJSON()
-lista = document.getElementById('lista');
+const lista = document.getElementById('lista');
 
-for (i = 0; i < alunos.length; i++){
+for (i = 0; i < alunos.length; i++) {
+    const p = criarElem('p', [[]]);
+    const a = criarElem('a',[["href","./"+alunos[i].pasta]]);
+    const div = criarElem('div',[["class","aluno"]]);
+    const li = criarElem('li',[[]]);
+
+    p.appendChild(document.createTextNode(alunos[i].nome));
+
+    a.appendChild(p);
+    div.appendChild(a);
+    li.appendChild(div);
+    lista.appendChild(li);
 }
